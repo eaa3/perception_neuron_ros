@@ -8,8 +8,6 @@ SET(ROS_SRC ros_lib/WindowsSocket.cpp ros_lib/time.cpp ros_lib/duration.cpp)
 
 SET(PERCEPTION_NEURON_ROS_SRC src/PerceptionNeuronROSserial.cpp src/stdafx.cpp)
 
-
-
 FIND_LIBRARY(NEURON_DATA_READER_LIBRARY NeuronDataReader HINTS ${CMAKE_CURRENT_SOURCE_DIR}/lib/x86)
 
 message("Found NEURON_DATA_READER_LIBRARY: ${NEURON_DATA_READER_LIBRARY}")
