@@ -30,6 +30,8 @@ cmake --build . --config Release
 
 Alternatively, you can open the visual studio solution in the "build" directory and build it.
 
+The generated executable will be at bin/perception_neuron_ros.exe in your project root directory.
+
 # Running instructions ([adapted from here](https://github.com/smhaller/perception-neuron-ros))
 
 This repository contains two ROS Modules: 
