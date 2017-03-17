@@ -22,6 +22,14 @@ Run cmake-gui from cmd. Then, configure and generate a visual studio x86 solutio
 cmake-gui ..
 ```
 
+Having generated visual studio solution, you may either run from the "build" directory:
+
+```
+cmake --build . --config Release
+```
+
+Alternatively, you can open the visual studio solution in the "build" directory and build it.
+
 # Running instructions ([adapted from here](https://github.com/smhaller/perception-neuron-ros))
 
 This repository contains two ROS Modules: 
@@ -33,8 +41,8 @@ Usage
 On your windows machine:
 
 - Connect your Perception Neuron to Axis Neuron and publish the BVH data.
-- Adapt IP addresses for ROS Serial Server and Axis Neuron in windows/config.txt 
-- Start perception_neuron_ros.exe 
+- Adapt IP addresses for ROS Serial Server and Axis Neuron in bin/config.txt 
+- Start bin/perception_neuron_ros.exe 
 
 
 On your ROS machine:
