@@ -1,4 +1,4 @@
-# PerceptionNeuronROS (Windows Server)
+# PerceptionNeuronROS
 
 This server reads data from PerceptionNeuron tracking system and publishes it to ROS.
 
