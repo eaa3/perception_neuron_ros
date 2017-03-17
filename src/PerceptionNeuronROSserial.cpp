@@ -80,22 +80,6 @@ struct MyCallbacks {
 		BRRegisterSocketStatusCallback(this, socketStatusChanged);
 
 		printf("Register Neuron Callbacks");
-		//_DataReceived = FrameDataReceived(bvhDataReceived);
-		//if (_DataReceived) {
-		//	BRRegisterFrameDataCallback(ptr, _DataReceived);
-		//	bBVH = true;
-		//}
-		//_CmdDataReceived = CalculationDataReceived(cmdDataReceived);
-		//if (_CmdDataReceived) {
-		//	BRRegisterCalculationDataCallback(ptr, _CmdDataReceived);
-		//	bCmd = true;
-		//}
-		//_SocketStatusChanged = SocketStatusChanged(socketStatusChanged);
-		//if (_SocketStatusChanged) {
-		//	BRRegisterSocketStatusCallback(ptr, _SocketStatusChanged);
-		//	bSSt = true;
-		//}
-		/*bCallbacks = bBVH&&bCmd&&bSSt;*/
 	}
 
 
@@ -170,13 +154,10 @@ int main(int argc, _TCHAR * argv[])
 
 	printf("\nConnecting to ROS Master (ROS Serial Server) at %s \n", ros_master);
 	 nh.initNode(ros_master);
-	printf("InitNode got!\n");
-	printf("Trying to connect to neuron\n");
 	// Neuron Connection
 	void * neuronptr = NULL;
 	if (BRGetSocketStatus(neuronptr) == SocketStatus::CS_Running) {
 		BRCloseSocket(neuronptr);
-		printf("What is that?\n");
 	}
 
 
@@ -226,7 +207,6 @@ int main(int argc, _TCHAR * argv[])
 	// Axis Neuron.
 
 	Sleep(1000);
-	printf("Here? 6\n");
 	while (1)
 	{
 
