@@ -3,7 +3,7 @@
 This server reads data from PerceptionNeuron tracking system and publishes it to ROS.
 
 It is a reorganised version of: https://github.com/smhaller/perception-neuron-ros
-Using the (Neuron Data Reader SDK version b15)[https://neuronmocap.com/software/neuron-data-reader-sdk].
+Using the [Neuron Data Reader SDK version b15](https://neuronmocap.com/software/neuron-data-reader-sdk).
 
 ## Building
 
