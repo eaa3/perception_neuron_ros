@@ -43,7 +43,7 @@ Usage
 On your windows machine:
 
 - Connect your Perception Neuron to Axis Neuron and publish the BVH data.
-- Adapt IP addresses for ROS Serial Server and Axis Neuron in bin/config.txt 
+- Adapt IP addresses for [ROS Serial Server](http://wiki.ros.org/rosserial_server) and Axis Neuron in bin/config.txt 
 - Start bin/perception_neuron_ros.exe 
 
 
