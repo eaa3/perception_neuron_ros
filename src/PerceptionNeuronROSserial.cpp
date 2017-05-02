@@ -37,8 +37,8 @@ int bufferLength = 0;
 bool bCallbacks = false;
 
 // Max Array Length for ROS Data = 255  should be for UINT8 (-> data_msg.data_length )
-// But not working maybe they used somewhere signed int8 
-// -> therefore the max array length = 127. 
+// But not working maybe they used somewhere signed int8
+// -> therefore the max array length = 127.
 
 // we split Axis Neuron Data in 3 Parts -> therefore
 int MAX_DATA_LENGTH = 120;
@@ -95,7 +95,7 @@ void prepareDataMsg(std_msgs::Float64MultiArray & data_msg) {
 	data_msg.layout.dim = (std_msgs::MultiArrayDimension *) malloc(sizeof(std_msgs::MultiArrayDimension) * 2);
 	data_msg.layout.dim[0].label = "PerceptionNeuronData";
 	data_msg.layout.dim[0].size = MAX_DATA_LENGTH;
-	// adapted ros_lib/ros/node_handle.h buffer limitations to 1024 (max would be 2048) 
+	// adapted ros_lib/ros/node_handle.h buffer limitations to 1024 (max would be 2048)
 	// that we can use MAX_DATA_LENGTH for data_msg.data_length.
 	data_msg.data_length = MAX_DATA_LENGTH;
 	data_msg.layout.data_offset = 0;
@@ -104,7 +104,7 @@ void prepareDataMsg(std_msgs::Float64MultiArray & data_msg) {
 
 int main(int argc, _TCHAR * argv[])
 {
-	
+
 	// first set some default values if no config file found
 	std::string ipAxisNeuron = "192.168.1.5";
 	std::string ipROS = "192.168.1.4";
@@ -162,7 +162,7 @@ int main(int argc, _TCHAR * argv[])
 
 
 	printf("Okay, we after the if SocketStatus::CS_Running\n");
-	
+
 	char *nIP = new char[ipAxisNeuron.length() + 1];
 	strcpy(nIP, ipAxisNeuron.c_str());
 
@@ -197,25 +197,22 @@ int main(int argc, _TCHAR * argv[])
 	ros::Publisher data_pub_1("/perception_neuron/data_1", &data_msg_1);
 	ros::Publisher data_pub_2("/perception_neuron/data_2", &data_msg_2);
 	ros::Publisher data_pub_3("/perception_neuron/data_3", &data_msg_3);
-	
+
 
 	nh.advertise(data_pub_1);
 	nh.advertise(data_pub_2);
 	nh.advertise(data_pub_3);
 
-	// Wait a bit, till first data arrived from 
-	// Axis Neuron.
 
-	Sleep(1000);
 	while (1)
 	{
 
 		if (verbose) {
 			printf("Current Data Frame %i \n", _frameCount);
 		}
-		
 
-		if (_valuesBuffer[114]) {
+		 // check that it have already received values from Axis Neuron
+		if (_valuesBuffer != NULL && _valuesBuffer[114]) {
 
 			for (int i = 0; i < MAX_DATA_LENGTH; i++) {
 				data_msg_1.data[i] = _valuesBuffer[i];
@@ -228,7 +225,7 @@ int main(int argc, _TCHAR * argv[])
 			data_pub_3.publish(&data_msg_3);
 
 		}
-		
+
 		nh.spinOnce();
 		Sleep(50);
 	}
